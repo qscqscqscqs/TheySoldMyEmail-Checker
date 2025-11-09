@@ -1,0 +1,40 @@
+{
+  "manifest_version": 2,
+  "name": "TheySoldMyEmail Checker",
+  "description": "Pr\u00fcft jede besuchte Website gegen die \u00f6ffentliche TheySoldMyEmail-Liste und sammelt lokal Seiten, die noch nicht enthalten sind.",
+  "version": "1.0.0",
+  "permissions": [
+    "storage",
+    "tabs",
+    "webNavigation",
+    "https://api.github.com/*"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ],
+    "persistent": false
+  },
+  "browser_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "48": "icons/icon48.png",
+      "96": "icons/icon96.png"
+    }
+  },
+  "icons": {
+    "48": "icons/icon48.png",
+    "96": "icons/icon96.png"
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "strict_min_version": "140.0",
+      "data_collection_permissions": {
+        "required": [
+          "none"
+        ]
+      },
+      "id": "{dc2a6394-9242-415f-9aef-7cf04f6dd604}"
+    }
+  }
+}
