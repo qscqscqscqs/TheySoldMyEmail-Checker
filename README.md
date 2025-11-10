@@ -1,6 +1,6 @@
 # TheySoldMyEmail Checker
 
-Erweiterung für Firefox, die das Projekt [TheySoldMyEmail](https://github.com/svemailproject/TheySoldMyEmail) beim schnelleren Finden neuer potenzieller Kandidaten unterstützt.
+Eine Erweiterung für Firefox, die das Projekt [TheySoldMyEmail](https://github.com/svemailproject/TheySoldMyEmail) beim schnelleren Finden neuer potenzieller Kandidaten unterstützt.
 
 Die Erweiterung prüft besuchte Websites gegen die öffentliche TheySoldMyEmail-Liste und sammelt lokal Domains, die dort noch nicht enthalten sind. So können Unterstützerinnen und Unterstützer gezielt neue Dienste an das Projekt melden.
 
