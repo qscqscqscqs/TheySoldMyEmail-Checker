@@ -1,50 +1,83 @@
 # TheySoldMyEmail Checker
 
-Eine Erweiterung für Firefox, die das Projekt [TheySoldMyEmail](https://github.com/svemailproject/TheySoldMyEmail) beim schnelleren Finden neuer potenzieller Kandidaten unterstützt.
+Browser-Erweiterung zur Unterstützung des Projekts [TheySoldMyEmail](https://github.com/svemailproject/TheySoldMyEmail).
 
-Die Erweiterung prüft besuchte Websites gegen die öffentliche TheySoldMyEmail-Liste und sammelt lokal Domains, die dort noch nicht enthalten sind. So können Unterstützerinnen und Unterstützer gezielt neue Dienste an das Projekt melden.
+Die Erweiterung hilft dabei, neue potenzielle Kandidaten-Domains zu identifizieren, ohne selbst sensible oder personenbezogene Daten zu übertragen.
 
----
+Mit der neuen Version der Erweiterung wurde die interne Logik vollständig überarbeitet:  
+Die Liste der relevanten Domains wird nicht mehr im Add-on selbst dynamisch erzeugt, sondern zentral auf dem Server aufbereitet und als fertige Referenzliste bereitgestellt:
 
-## Funktionsumfang
+`http://addons.qscqscqscqs.de/issue_urls.txt`
 
-- **Abgleich mit bestehender Liste**  
-  Beim Laden einer Seite wird die Domain gegen die im Projekt gepflegte Übersichtsliste (GitHub Issue #98) geprüft.
-
-- **Erkennung neuer Kandidaten**  
-  Domains, die nicht in der Liste vorkommen, werden lokal als „ungelistete Vorschläge“ gespeichert.
-
-- **Badge-Anzeige**  
-  Das Add-on-Icon zeigt die Anzahl aktuell erkannter, noch nicht gemeldeter Domains als Badge an.
-
-- **Übersicht im Popup**  
-  Ein Klick auf das Icon öffnet ein Popup mit allen gesammelten Domains.  
-  Von dort aus können Einträge überprüft und die Liste bei Bedarf geleert werden.
-
-Dieses Add-on übermittelt keine Daten automatisiert an das Projekt. Es unterstützt ausschließlich dabei, mögliche neue Einträge schneller zu identifizieren.
+Dadurch werden frühere Stabilitätsprobleme vermieden, die durch Änderungen an externen Quellen entstanden sind.
 
 ---
 
-## So unterstützt die Erweiterung das Projekt
+## Funktionsweise
 
-1. Add-on installieren.
-2. Wie gewohnt im Web surfen.
-3. Regelmäßig das Popup öffnen:
-   - Die aufgelisteten Domains prüfen.
-   - Relevante Dienste als Vorschlag im Hauptrepository melden:
-     - Neues Issue in [`svemailproject/TheySoldMyEmail`](https://github.com/svemailproject/TheySoldMyEmail/issues) erstellen.
-     - Domain(s) aus dem Popup übernehmen.
-     - Kurz beschreiben, worum es bei dem Dienst geht (z. B. Newsletter, Shop, SaaS, Forum).
+### 1. Zentrale Referenzliste
 
-Auf diese Weise entsteht aus normaler Nutzung heraus eine qualitativ bessere Vorschlagsliste, ohne dass personenbezogene Daten geteilt werden.
+- Beim Start (und in definierten Abständen) ruft das Add-on die Datei `issue_urls.txt` vom Server ab.
+- Diese Datei enthält eine bereits normalisierte und kuratierte Liste bekannter Domains aus dem TheySoldMyEmail-Kontext.
+- Die Liste wird ausschließlich zum lokalen Abgleich verwendet.
+
+### 2. Prüfung besuchter Seiten
+
+- Bei jedem Seitenaufruf wird die aktuelle URL verarbeitet:
+  - Protokoll wird entfernt (z. B. `https://`),
+  - gängige Präfixe wie `www.` werden entfernt,
+  - Groß-/Kleinschreibung wird vereinheitlicht.
+- Die so normalisierte Domain wird mit der geladenen Referenzliste abgeglichen.
+
+### 3. Erkennung neuer Kandidaten
+
+- Ist eine Domain **nicht** in der Referenzliste enthalten, kann sie als potenzieller neuer Kandidat lokal vorgemerkt werden.
+- Diese potenziellen Kandidaten dienen als Grundlage, um neue Einträge für das Hauptprojekt zu finden.
+- Es erfolgt **keine** automatische Übermittlung dieser Daten.
+
+### 4. Anzeige im Add-on
+
+- Das Symbol des Add-ons kann die Anzahl offener Kandidaten als Badge anzeigen.
+- Über das Popup lassen sich erkannte Domains einsehen, bereinigen oder verwerfen.
+- Relevante Einträge können von den Nutzenden manuell an das Hauptprojekt gemeldet werden.
+
+---
+
+## Datenschutz
+
+Die Erweiterung ist bewusst datensparsam konzipiert:
+
+- Es werden **keine** vollständigen Surfverläufe aufgezeichnet oder übertragen.
+- Es werden **keine** gesammelten Domains oder Kandidaten automatisch an Server oder Dritte gesendet.
+- Die einzige externe Anfrage ist der Download der öffentlichen Datei `issue_urls.txt`.
+- Alle erkannten potenziellen Kandidaten verbleiben lokal im Browser, bis Nutzende diese freiwillig und manuell melden.
+
+---
+
+## Beitrag zum TheySoldMyEmail-Projekt
+
+Die Erweiterung unterstützt das Projekt indirekt:
+
+1. Erweiterung installieren.
+2. Normal im Web surfen.
+3. In regelmäßigen Abständen das Popup öffnen und prüfen:
+   - Welche neuen Domains wurden erkannt?
+   - Welche davon gehören zu Diensten, bei denen individuelle Adressen verwendet wurden?
+4. Relevante Dienste manuell als Issue im [TheySoldMyEmail-Repository](https://github.com/svemailproject/TheySoldMyEmail) melden.
+
+Empfehlung für Meldungen:
+- kurze Beschreibung des Dienstes,
+- Kontext (z. B. Newsletter, Shop, SaaS, Forum),
+- ohne persönliche Daten oder konkreten Alias offenzulegen.
 
 ---
 
 ## Installation
 
-### Aus der `.xpi`-Datei
+### Aus Release-Build
 
-1. Die aktuelle `.xpi`-Datei dieses Repositories herunterladen.
+1. Aktuelle `.xpi`-Datei aus den Releases dieses Repositories herunterladen.
 2. In Firefox:
-   - Menü öffnen → **Add-ons und Themes** → Zahnrad-Menü → **Add-on aus Datei installieren…**.
-   - Die `.xpi`-Datei auswählen und Installation bestätigen.
+   - Menü öffnen → **Add-ons und Themes**
+   - Zahnrad-Symbol → **Add-on aus Datei installieren…**
+   - `.xpi` auswählen und Installation bestätigen.
