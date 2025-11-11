@@ -9,7 +9,7 @@ Die Liste der relevanten Domains wird nicht mehr im Add-on selbst dynamisch erze
 
 `http://addons.qscqscqscqs.de/issue_urls.txt`
 
-Dadurch werden frühere Stabilitätsprobleme vermieden, die durch Änderungen an externen Quellen entstanden sind.
+Dadurch werden frühere Stabilitätsprobleme vermieden, die durch die aufbereitung der Quellen im Addon entstanden sind.
 
 ---
 
@@ -64,12 +64,6 @@ Die Erweiterung unterstützt das Projekt indirekt:
    - Welche neuen Domains wurden erkannt?
    - Welche davon gehören zu Diensten, bei denen individuelle Adressen verwendet wurden?
 4. Relevante Dienste manuell als Issue im [TheySoldMyEmail-Repository](https://github.com/svemailproject/TheySoldMyEmail) melden.
-
-Empfehlung für Meldungen:
-- kurze Beschreibung des Dienstes,
-- Kontext (z. B. Newsletter, Shop, SaaS, Forum),
-- ohne persönliche Daten oder konkreten Alias offenzulegen.
-
 ---
 
 ## Installation
