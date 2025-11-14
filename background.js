@@ -8,8 +8,8 @@
  */
 
 const LIST_URL = 'http://addons.qscqscqscqs.de/issue_urls.txt';
-// Intervall für die Aktualisierung der Liste (in Millisekunden). Sechs Stunden.
-const REFRESH_INTERVAL_MS = 6 * 60 * 60 * 1000;
+// Intervall für die Aktualisierung der Liste (in Millisekunden). Fünfzehn Minuten.
+const REFRESH_INTERVAL_MS = 15 * 60 * 1000;
 
 // Set für Domains aus der Liste (normalisiert)
 let knownDomains = new Set();

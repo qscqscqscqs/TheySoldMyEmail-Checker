@@ -2,7 +2,7 @@
   "manifest_version": 2,
   "name": "TheySoldMyEmail Checker",
   "description": "Pr\u00fcft jede besuchte Website gegen die \u00f6ffentliche TheySoldMyEmail-Liste und sammelt lokal Seiten, die noch nicht enthalten sind.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "permissions": [
     "storage",
     "tabs",
