@@ -22,7 +22,7 @@ Dadurch wird die Architektur einfacher, transparenter und weniger fehleranfälli
 
 ## Versionshinweis (1.1 / 1.2)
 
-Die Versionen **1.1** und **1.2** der Erweiterung basieren noch auf der alten Architektur mit zentralem Server:
+Die Versionen **1.1** und **1.2** der Erweiterung basieren noch auf der Übergangs Architektur mit zentralem Server:
 
 - Diese Versionen verwenden weiterhin die vom Server bereitgestellte Datei `issue_urls.txt`.
 - Sie werden nur noch für eine **Übergangszeit** funktionsfähig bleiben.
