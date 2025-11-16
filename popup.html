@@ -39,7 +39,20 @@
   <div id="content">
     <ul id="unmatched-list"></ul>
     <p id="empty" hidden>Keine neuen Domains erkannt.</p>
-    <button id="clear">Liste leeren</button>
+    <div style="display: flex; gap: 0.5em; margin-top: 0.5em;">
+      <button id="copy">Kopieren</button>
+      <button id="clear">Liste leeren</button>
+    </div>
+
+    <div style="margin-top: 1em; padding-top: 0.5em; border-top: 1px solid #ccc;">
+      <label style="font-size: 12px; display: flex; align-items: center; cursor: pointer;">
+        <input type="checkbox" id="fullMonitoring" style="margin-right: 0.5em;">
+        <span>Vollständige Überwachung (alle Tab-Updates)</span>
+      </label>
+      <p style="font-size: 10px; color: #666; margin: 0.3em 0 0 1.7em;">
+        Standardmäßig werden nur neue Seitenaufrufe überwacht.
+      </p>
+    </div>
   </div>
   <script src="popup.js"></script>
 </body>
